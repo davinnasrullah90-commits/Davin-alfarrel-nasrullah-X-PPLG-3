@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Davin Alfarrel Nasrullah | Game Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitr">
+
+<style>
+        
+:root {
+    --bg-dark: #0A0A0A;
+    --primary-color: #fff;
+    --accent-neon: #00FFFF;
+    --secondary-neon: #9B59B6;
+    --text-dark-bg: #ccc;
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto Mono', monospace;
+}
+
+/* Animasi Bintang Jatuh */
+@keyframes star-fall {
+    0% { transform: translateY(-100vh) scale(0.2); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(100vh) scale(1.2); opacity: 0; }
+}
+
+.star-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-dark);
+    z-index: -1;
+    pointer-events: none;
+}
+
+.star-bg::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, var(--accent-neon) 1px, transparent 1px),
+                radial-gradient(circle, var(--secondary-neon) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.1;
+    animation: star-fall 30s linear infinite;
+}
+
+/* Gaya Umum Website */
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-dark);
+    color: var(--text-dark-bg);
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 6rem 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    line-height: 1.2;
+    color: var(--primary-color);
+    text-shadow: 0 0 5px var(--accent-neon);
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-neon);
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-neon);
+    text-shadow: 0 0 10px var(--secondary-neon);
+}
+
+.cta-button {
+    display: inline-block;
+    background: var(--accent-neon);
+    color: var(--bg-dark);
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cta-button:hover {
+    background: var(--secondary-neon);
+    box-shadow: 0 0 15px var(--secondary-neon);
+}
+
+/* Efek Glassmorphism (Kaca Buram) */
+.glassmorphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    margin-bottom: 2rem;
+}
+
+/* Header & Navigasi */
+header {
+    background: rgba(10, 10, 10, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-left: 2rem;
+}
+
+nav a {
+    font-weight: 500;
+    color: var(--text-dark-bg);
+}
+
+/* Hero Section */
+#hero {
+    padding: 10rem 0;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.hero-text .tagline {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--secondary-neon);
+    text-shadow: 0 0 5px var(--secondary-neon);
+}
+
+.hero-image {
+    flex: 1;
+    text-align: center;
+    min-width: 250px;
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 50%;
+    border: 3px solid var(--accent-neon);
+    box-shadow: 0 0 15px var(--accent-neon);
+}
+
+/* Bagian Lain */
+h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    text-shadow: 0 0 5px var(--accent-neon);
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.skill-card, .portfolio-item {
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover, .portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px var(--accent-neon);
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+/* Footer */
+footer {
+    background: var(--bg-dark);
+    color: var(--text-dark-bg);
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-social a {
+    margin: 0 1rem;
+    font-weight: 500;
+    text-shadow: 0 0 5px var(--accent-neon);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    #hero .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hero-text {
+        margin-bottom: 2rem;
+    }
+
+    .hero-image {
+        order: -1;
+        margin-bottom: 2rem;
+    }
+
+    .hero-image img {
+        width: 70%;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div class="star-bg"></div>
+    <header>
+        <div class="container">
+            <a href="#" class="logo">DAVIN ALFARREL NASRULLAH X PPLG 3</a>
+            <nav>
+                <ul>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#skills">Keahlian</a></li>
+                    <li><a href="#myfavoritegame">myfavoritegames</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container hero-content">
+                <div class="hero-text">
+                    <h1>Membangun Dunia Baru. <br>Satu Kode per Satu.</h1>
+                    <p class="tagline">Seorang siswa yang ingin menjadi Game Developer dan bersemangat.</p>
+                    <a href="#portfolio" class="cta-button">game favorite saya</a>
+                </div>
+                <div class="hero-image">
+                    <img src="https://th.bing.com/th/id/OIP.-SIDz-F9o_nl8XanBH6DBQHaHa?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Foto Davin Alfarrel Nasrullah">
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="glassmorphism">
+            <div class="container">
+                <h2>Tentang Saya</h2>
+                <div class="about-content">
+                    <p>Halo! Saya Davin alfafrel nasrullah sering dipanggil davin,saya seorang siswa SMKN 1 Ciomas yang percaya bahwa video game adalah media seni interaktif. Dengan keahlian dalam Unity pengembangan konsep dan kreativitas & storytelling, saya berfokus untuk menciptakan pengalaman bermain yang menarik, menantang, dan tak terlupakan.</p>
+                    <p>Saya adalah pembelajar cepat yang selalu mencari tantangan baru untuk mengasah kemampuan saya di game design. Mari kita wujudkan ide game keren bersama!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="glassmorphism">
+            <div class="container">
+                <h2>Keahlian</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <h3>kreativitas & storytelling</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>game design</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>pengembangan konsep</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>game engine</h3>
+                    </div>
+                    <div class="skill-card">
+                        <h3>desain audio</h3>
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="glassmorphism">
+            <div class="container">
+                <h2>Portofolio</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://tse1.mm.bing.net/th/id/OIP.JtlJAjzDbfSc-jNBlKaLDAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Proyek Game 1">
+                        <h4>ROBLOX</h4>
+                        <br>
+                        <h1>Manfaat bermain Roblox antara lain meningkatkan keterampilan sosial, memperluas jaringan pertemanan, melepas penat dan stres, serta mengasah kreativitas.</h1>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://tse3.mm.bing.net/th/id/OIP.KO2HbRC_h67s9ACdI4VyzAHaDu?r=0&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Proyek Game 2">
+                        <h4>MINECRAFT</h4>
+                        <br>
+                        <h1>bermain game Minecraft memiliki banyak manfaat bagi para pemainnya. Salah satunya melatih kekreativitas otak dalam menciptakan sesuatu</h1>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://th.bing.com/th/id/OIP.bDia8trMaDHZ8IOWtD087gHaEK?r=0&o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Proyek Game 3">
+                        <h4>MOBILE LEGENDS</h4>
+                        <br>
+                        <h1>Manfaat bermain Mobile Legends selanjutnya adalah dapat melatih kerja sama tim. Seperti kita ketahui, Mobile Legends adalah game MOBA 5v5 yang harus mengandalkan kerja sama tim untuk mendapatkan kemenangan.</h1>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <h3>Hubungi Saya</h3>
+            <div class="footer-social">
+                <a href="#">Email</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+                <a href="#">WhatsApp</a>
+            </div>
+            <p>&copy; 2024 Davin Alfarrel Nasrullah. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+</body>
+</html>
